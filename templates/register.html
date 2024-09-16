@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/logreg.css') }}">
+<title>Register</title>
+{% endblock %}
+
+{% block body %}
+    <!-- Register For Account -->
+    <main class="flex center-content center-items">
+        <div class="logdiv">
+            <div class="login">
+                <div class="login-group">
+                    <form id="reg-form" action="/register"  method="post" autocomplete="off">   
+                        <div class="slide show">
+                            <div class="title">
+                                <h1>Choose Account Type</h1>
+                            </div>
+                            <input type="radio" name="select" id="option-1" value="student">
+                            <input type="radio" name="select" id="option-2" value="parent">
+                            <input type="radio" name="select" id="option-3" value="coach">
+                            <label for="option-1" class="option option-1">
+                                <span>Student</span>
+                                </label>
+                            <label for="option-2" class="option option-2">
+                                <span>Parent</span>
+                            </label>
+                            <label for="option-3" class="option option-3">
+                                <span>Teacher/Coach</span>
+                            </label>
+                        </div>
+                        <div class="slide">
+                            <div class="title">
+                                <h1>Create Account</h1>
+                            </div>
+                            <div class="reg">
+                                <input autocomplete="off" autofocus class="" name="email" type="text" placeholder="Email">
+                            </div>
+                            <div class="reg">
+                                <input name="password" type="password" placeholder="Password">
+                            </div>
+                            <div class="reg">
+                                <input name="confirmation" type="password" placeholder="Password (Again)">
+                            </div>
+                        
+                        </div>
+                        <div class="slide">
+                            <div class="title">
+                                <h1>Account Verification</h1>
+                            </div>
+                            <div class="reg">
+                                <input autocomplete="off" autofocus class="" name="conf-email" type="text" placeholder="Student Email" style="margin-bottom: 0;">
+                                <i><p style="font-size: small; padding: 10px 0; text-align: left;">*Use your childs school email to verify your account.</p></i>
+
+                            </div>                      
+                        </div>
+                        <div style="display: flex;" >
+                            <button class="hide" type="reset" id="prevBtn" onclick="plusSlides(-1)">Back</button>
+
+                            <button type="button" id="nextBtn" onclick="plusSlides(1)" >Next</button>
+                        </div>
+                    </form>
+                    <hr>
+                    <div>
+                        <p> Have An Account? <a href="/login"><b>Login now!</b></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+{% endblock %}

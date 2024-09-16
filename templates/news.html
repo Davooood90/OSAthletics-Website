@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/miscellaneous.css') }}">
+<title>Home</title>
+{% endblock %}
+
+{% block body %}
+    <main>
+        <!-- Title -->
+        <section class="relative header-background" style="background-image: url('/static/img/osa.jpg');">
+            <div class="header">
+                <div class="container">
+                    <h1><b>News and Events</b></h1> 
+                </div>
+            </div> 
+        </section>
+        <!-- Calendar -->
+        <section class="green-container">
+            <div class="anchored">
+                <span id="calendar"></span>
+            </div>
+            <div class="container" style="padding: 25px;">
+                <div class="title" >
+                    <h1 style="margin-top: 0;">Old Scona Athletics Calendar</h1> 
+                </div>
+                <div class="desktop cal-container">
+                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FEdmonton&title=Old%20Scona%20Athletics%20Calendar&src=b2xkc2NvbmF0aGxldGljc0BnbWFpbC5jb20&src=YjJkNTgxZTgxY2M0OTg1NzhjOThmYzRhZGMwYTgzZmY5Y2MyZDMyNmY5OGIwYzJiMmQxMjY5ZTRiODM1OWZiZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MzcyN2M3ZDM0MjEwYThiMmUyYzgwNjU1MzFiNWIxNGNhZWM5MWQwYjkyMmIzNTE5MGYzMDdhZTZjNDdkZjg4YUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MmU3YTg5YmQ3NWU5OTBlOTc0ZDNhNTM4MDc5ZDcxMGZiMTZkZjM5OTVlMGY2ZGExY2RiM2Q2YmE3ZWE4ODI1N0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MmsycmUyazU1c2JpdjE0aHVnNTN0YTRpZjVkMml0M2lAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=OW8xa3U0c2plbWZlcDBrN2w2MjRmOXFjb3VzZDJ2MmhAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=bXBnbGpnbnF1NGhjOWlicmw1cXF2dGVrMzZsODhsa2lAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=NzM3dnB2dDM4dm52NXZuNGhxYmIzczZhZXBva2M1NDBAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=Z3FobWRyOGVrOWp0bmNrcnQ2anZzYjZ2c2dhdDFsNjlAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=aTljYTJtMW85ZnR1YzhpbThpaHF0ZmZtbTk5OW41OTNAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=djkydnRnbHJxaHBnNmcyZ21taDlubGUwN3YyaHR0N3RAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=Ym5naG1pZmxnMTY2MXU2amQwdWUwN2VxZXMwdWtkbmhAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=ajloZ2NoMzVrYzM3cXE3a3Mwb3AwOWlkbzNlZXRqdWJAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%237CB342&color=%239E69AF&color=%23616161&color=%23AD1457&color=%239E69AF&color=%23E67C73&color=%234285F4&color=%23D50000&color=%23AD1457&color=%233F51B5&color=%23F09300&color=%23AD1457" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+                </div>
+                <div class="mobile cal-container">
+                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FEdmonton&title=Old%20Scona%20Athletics%20Calendar&mode=AGENDA&src=b2xkc2NvbmF0aGxldGljc0BnbWFpbC5jb20&src=YjJkNTgxZTgxY2M0OTg1NzhjOThmYzRhZGMwYTgzZmY5Y2MyZDMyNmY5OGIwYzJiMmQxMjY5ZTRiODM1OWZiZkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MzcyN2M3ZDM0MjEwYThiMmUyYzgwNjU1MzFiNWIxNGNhZWM5MWQwYjkyMmIzNTE5MGYzMDdhZTZjNDdkZjg4YUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MmU3YTg5YmQ3NWU5OTBlOTc0ZDNhNTM4MDc5ZDcxMGZiMTZkZjM5OTVlMGY2ZGExY2RiM2Q2YmE3ZWE4ODI1N0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=MmsycmUyazU1c2JpdjE0aHVnNTN0YTRpZjVkMml0M2lAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=OW8xa3U0c2plbWZlcDBrN2w2MjRmOXFjb3VzZDJ2MmhAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=bXBnbGpnbnF1NGhjOWlicmw1cXF2dGVrMzZsODhsa2lAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=NzM3dnB2dDM4dm52NXZuNGhxYmIzczZhZXBva2M1NDBAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=Z3FobWRyOGVrOWp0bmNrcnQ2anZzYjZ2c2dhdDFsNjlAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=aTljYTJtMW85ZnR1YzhpbThpaHF0ZmZtbTk5OW41OTNAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=djkydnRnbHJxaHBnNmcyZ21taDlubGUwN3YyaHR0N3RAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=Ym5naG1pZmxnMTY2MXU2amQwdWUwN2VxZXMwdWtkbmhAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&src=ajloZ2NoMzVrYzM3cXE3a3Mwb3AwOWlkbzNlZXRqdWJAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%237CB342&color=%239E69AF&color=%23616161&color=%23AD1457&color=%239E69AF&color=%23E67C73&color=%234285F4&color=%23D50000&color=%23AD1457&color=%233F51B5&color=%23F09300&color=%23AD1457" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </section>
+        <!-- Information -->
+        <section class="white-container">
+            <div class="anchored">
+                <span id="information"></span>
+            </div>
+            <div class="container">
+                <div class="title">
+                    <h1>Information</h1> 
+                </div>
+                <div style="padding: 0 30px 30px">
+                    {% if info|length < 1 %}
+                        <p style="text-align:center;">No Information Has Been Added</p>
+                    {% else %}
+                        <hr style="margin: 30px 0;">
+                        {% for sinfo in info %}
+                            <div>
+                                <h3>{{ sinfo.title }}</h3>
+                                <p style="font-size: 15px;">Posted on {{ sinfo.dateposted }}</p>
+                                <p style="line-height: 1.5rem; white-space: pre-line;">{{ sinfo.description }}</p>
+                            </div>
+                            <hr style="margin: 30px 0;">
+                        {% endfor %}
+                    {% endif %}
+                </div>
+        </section>
+        <!-- Highlights -->
+        <section class="green-container">
+            <div class="anchored">
+                <span id="highlights"></span>
+            </div>
+            <div class="container">
+                <div class="title">
+                    <h1>Highlights</h1> 
+                </div>
+                <div style="padding: 0 30px 30px">
+                    {% if highlights|length < 1 %}
+                        <p style="text-align:center;">No Highlights Have Been Added</p>
+                    {% else %}
+                        {% for highlight in highlights %}
+                            <a href="{{ highlight.link }}" target="_blank" style="text-decoration: none; color: var(--osa-green);">
+                                <div class="highlights" style="margin-bottom: 35px;">
+                                    <div class="fit">
+                                        <div class="highlight-image" style="background-image: url(static/img/OSAthletics_collage.png);">
+                                        </div>
+                                        <div class="highlight-info" style="background-color: white;">
+                                            <div class="text-align text-center">
+                                                <div>
+                                                    <h1 style="margin-top: 0;">{{ highlight.title }}</h1> 
+                                                    <p>{{ highlight.description }}
+                                                    </p>        
+                                                </div>
+                                            </div>                             
+                                        </div>
+                                    </div>
+                                </div>     
+                            </a>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+        </section>
+        <!-- Edit Button -->
+        {% if session.type == "admin"%} 
+        <a href="/manager/news" class="editbtn">
+            <?xml version="1.0" encoding="utf-8"?>
+            <!-- Generator: Adobe Illustrator 26.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+
+            <g id="Layer_1">
+                <circle class="st7" cx="250" cy="250" r="219.72"/>
+            </g>
+            <g id="Layer_2">
+                <rect x="146.7" y="146.7" class="st8" width="206.59" height="206.59"/>
+            </g>
+            <g id="Layer_3">
+                
+                    <rect x="299.48" y="166.55" transform="matrix(0.5228 0.8525 -0.8525 0.5228 351.5071 -174.5031)" class="st7" width="64.26" height="120.3"/>
+                <g>
+                    
+                        <rect x="288.79" y="173.29" transform="matrix(0.5228 0.8525 -0.8525 0.5228 352.9828 -149.6614)" class="st0" width="42.75" height="134.3"/>
+                    <polygon class="st0" points="248.12,278.49 259.3,296.71 229.19,302.64 199.08,308.57 218.01,284.42 236.95,260.27 		"/>
+                    <g>
+                        <circle class="st0" cx="390.43" cy="191.22" r="21.37"/>
+                        
+                            <rect x="359.94" y="186.12" transform="matrix(0.5228 0.8525 -0.8525 0.5228 349.7403 -231.1381)" class="st0" width="42.75" height="21.37"/>
+                    </g>
+                </g>
+            </g>
+            </svg>
+        </a>
+        {% endif %}
+    </main>
+{% endblock %}

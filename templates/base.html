@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="icon" type="image/x-icon" href="/static/img/council_logo.png">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/alert.css') }}">
+        <!-- Jinja Templating -->
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <div class="fixed top left width-fill navbar" id="navigate">
+            <div class="container" >
+                <!-- Navbar Button (For Small Screens) -->
+                <button onclick="openMenu()" class="height-fill center-items center-content float-left noborder flex menubtn" style="background-color: inherit;">                        
+                    <svg fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="25px" height="25px"><path d="M 3 7 A 1.0001 1.0001 0 1 0 3 9 L 27 9 A 1.0001 1.0001 0 1 0 27 7 L 3 7 z M 3 14 A 1.0001 1.0001 0 1 0 3 16 L 27 16 A 1.0001 1.0001 0 1 0 27 14 L 3 14 z M 3 21 A 1.0001 1.0001 0 1 0 3 23 L 27 23 A 1.0001 1.0001 0 1 0 27 21 L 3 21 z"/></svg>
+                </button>
+                <!-- Navbar Links -->
+                <div class="float-left flex center-items center-content height-fill width-default logo">
+                    <a class="notextdecor osa-green" style="font-size: 23px;" href="/"><b>OSAthletics</b></a>
+                </div>
+                <div class="menu">
+                    <div id="choices" class="block float-right content-choices">
+                        <div class="float-left text-center flex center-content center-items choices">
+                            <a href="/"><b>Home</b></a>
+                        </div>
+                        <div class="dropdown">
+                            <button class="noborder pointer dropbtn" onclick="openNews()">News and Events ▾</button>
+                            <div id="news" class="fixed hide dropdown-content">
+                                <a href="/news#calendar">Athletics Calendar</a>
+                                <a href="/news#information">Information</a>
+                                <a href="/news#highlights">Highlights</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="noborder pointer dropbtn" onclick="openTeams()">Teams ▾</button>
+                            <div id="teams" class="fixed hide dropdown-content">
+                                <div class="subchoice">
+                                    <a href="/team/badminton">Badminton</a>
+                                </div>
+                                
+                                <div class="relative inline-block width-fill sub-dropdown">
+                                    <button class="noborder pointer subdropbtn" onclick="openTeams('basket')">Basketball</button>
+                                    <div id="basket" class="absolute hide sub-dropdown-content">
+                                        <a href="/team/mens-basketball">Mens Basketball</a>
+                                        <a href="/team/womens-basketball">Womens Basketball</a>
+                                    </div>
+                                </div>
+                                <a href="/team/cross-country">Cross Country</a>
+                                <div class="relative inline-block width-fill sub-dropdown">
+                                    <button class="noborder pointer subdropbtn" onclick="openTeams('hand')">Handball</button>
+                                    <div id="hand" class="absolute hide sub-dropdown-content">
+                                        <a href="/team/mens-handball">Mens Handball</a>
+                                        <a href="/team/womens-handball">Womens Handball</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="relative inline-block width-fill sub-dropdown">
+                                        <button class="noborder pointer subdropbtn" onclick="openTeams('soccer')">Soccer</button>
+                                        <div id="soccer" class="absolute hide sub-dropdown-content">
+                                            <a href="/team/mens-soccer">Mens Soccer</a>
+                                            <a href="/team/womens-soccer">Womens Soccer</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/team/swimming">Swimming</a>
+                                <a href="/team/track-&-field">Track & Field</a>
+                                <div class="relative inline-block width-fill sub-dropdown">
+                                    <button class="noborder pointer subdropbtn" onclick="openTeams('volley')">Volleyball</button>
+                                    <div id="volley" class="absolute hide sub-dropdown-content">
+                                        <a href="/team/mens-volleyball">Mens Volleyball</a>
+                                        <a href="/team/womens-volleyball">Womens Volleyball</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="float-left text-center flex center-content center-items choices">
+                            <a href="/contact"><b>About Us</b></a>
+                        </div>
+                        {% if session.user_id %}  
+                            <div class="dropdown">
+                                <button class="noborder pointer dropbtn" onclick="openProfile()">Profile ▾</button>
+                                <div id="profile" class="fixed hide dropdown-content">
+                                    {% if session.type != "admin"%} 
+                                    <a href="/profile">My Account</a>
+                                    {% endif %}
+                                    <a href="/settings">Settings</a>
+                                    {% if session.type == "admin"%} 
+                                        <a href="/manager/users">Manager</a>
+                                    {% endif %}
+                                    <a href="/logout">Logout</a>
+                                </div>
+                            </div> 
+                            
+                        {% else %}
+                            <div class="float-left text-center flex center-content center-items choices">
+                                <a href="/login"><b>Login</b></a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Notification (Success/Failure) -->
+        <div class="width-fill fixed" style="z-index: 2;">
+            <div class="container">
+                {% for notification in get_flashed_messages() %}
+                <div class="flex center-items alert {{ notification.split(' ', 1)[0] }}" id="alert">
+                    <div class="alert-message">
+                        {{ notification.split(" ", 1)[1] }}
+                    </div> 
+                    <div class="flex alert-close center-content" >
+                        <button class="noborder pointer" onclick="closeAlert()" style="background-color: inherit;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" style="pointer-events: none; width: 20px;height: 20px;vertical-align: middle;fill: rgb(0, 58, 19);overflow: hidden;" viewBox="0 0 1024 1024" version="1.1"><path d="M664.377948 511.42322l326.997958 326.997959a108.146166 108.146166 0 0 1-152.954727 152.954727l-326.997959-326.997958-326.997958 326.997958a108.146166 108.146166 0 0 1-152.954728-152.954727l326.997959-326.997959L31.470534 184.425262A108.146166 108.146166 0 0 1 184.425262 31.470534l326.997958 326.997959L838.421179 31.470534a108.146166 108.146166 0 0 1 152.954727 152.954728z"/></svg>
+                        </button>
+                    </div>
+                </div>    
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Jinja Templating -->
+        {% block body %}{% endblock %}
+
+        <footer>
+            <div class="container">
+                <div class="flex text-center center-items foot">
+                    <p class="copyright">© 2022 Old Scona Academic</p>
+                </div>
+                
+            </div>
+        </footer>
+        
+        <!-- Jinja Templating -->
+        {% block script %}{% endblock %}
+    </body>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+
+</html>

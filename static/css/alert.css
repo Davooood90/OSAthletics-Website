@@ -1,0 +1,38 @@
+/* Popup/Notification */
+
+.alert {
+    min-height: 56px;
+    margin: 15px 20px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.alert-message {
+    width: 95%;
+}
+
+@media screen and (max-width: 900px) {
+    .alert-message {
+        width: 90%;
+    }
+}
+
+.alert-close {
+    width: 5%;
+    min-width: 30px;
+}
+
+.closed {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.35s, opacity 0.35s linear;
+}
+
+.success {
+    background-color: rgb(215, 255, 219);
+}
+
+.error {
+    background-color: rgb(255, 215, 215);
+}

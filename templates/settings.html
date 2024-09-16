@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+
+<title>{{ header }}</title>
+{% endblock %}
+
+{% block body %}
+    <main>
+        <!-- Title -->
+        <section class="relative header-background" style="background-image: url('/static/img/osa.jpg');">
+            <div class="header">
+                <div class="container">
+                    <h1><b>Settings</b></h1> 
+                </div>
+            </div> 
+        </section>
+        <section class="white-container" id="display-settings">
+            <div class="container">
+                {% if session.type != "admin" %}
+                    <div class="flex center-content">  
+                        <!-- Personal Information -->
+                        <div class="broad-container">
+                            <div class="flex">
+                                <h2>Personal Information</h2>
+                            </div>
+                            <hr style="margin: 0">    
+                            <div class="width-fill">
+                                <div class="width-fill">
+                                    <a href="/settings/edit/name" class="noborder pointer flex select width-fill setting-container">
+                                        <div class="flex width-fill">
+                                            <div class="setting-name">
+                                                <h3>Name</h3>
+                                            </div>
+                                            <div class="setting-desc">
+                                                <p>Manage Name</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <hr style="margin: 0">    
+                                </div>    
+                                <div class="width-fill">
+                                    <a href="/settings/edit/birthday" class="noborder pointer flex select width-fill setting-container">
+                                        <div class="flex width-fill">
+                                            <div class="setting-name">
+                                                <h3>Birthday</h3>
+                                            </div>
+                                            <div class="setting-desc">
+                                                <p>Manage Birthday</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <hr style="margin: 0">    
+                                </div>   
+                                <div class="width-fill">
+                                    <a href="/settings/edit/gender" class="noborder pointer flex select width-fill setting-container">
+                                        <div class="flex width-fill">
+                                            <div class="setting-name">
+                                                <h3>Gender</h3>
+                                            </div>
+                                            <div class="setting-desc">
+                                                <p>Manage Gender</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <hr style="margin: 0">    
+                                </div>      
+                                <div class="width-fill">
+                                    <a  href="/settings/edit/phone_number" class="noborder pointer flex select width-fill setting-container">
+                                        <div class="flex width-fill">
+                                            <div class="setting-name">
+                                                <h3>Phone Number</h3>
+                                            </div>
+                                            <div class="setting-desc">
+                                                <p>Manage Phone Number</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <hr style="margin: 0">    
+                                </div>     
+                                <div class="width-fill">
+                                    <a href="/settings/edit/email" class="noborder pointer flex select width-fill setting-container">
+                                        <div class="flex width-fill">
+                                            <div class="setting-name">
+                                                <h3>Email</h3>
+                                            </div>
+                                            <div class="setting-desc">
+                                                <p>Manage Email</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div> 
+                            </div>
+                        </div> 
+                    </div>
+                {% endif %}
+                <div class="flex center-content"> 
+                    <!-- Security -->
+                    <div class="broad-container">
+                        <div class="flex">
+                            <h2>Security</h2>
+                        </div>
+                        <hr style="margin: 0">    
+                        <div class="width-fill">
+                            <a href="/settings/edit/password" class="noborder pointer flex select width-fill setting-container">
+                                <div class="flex width-fill">
+                                    <div class="setting-name">
+                                        <h3>Password</h3>
+                                    </div>
+                                    <div class="setting-desc">
+                                        <p>Manage Password</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>    
+                    </div> 
+                </div>
+            </div>
+        </section>
+    </main>        
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,238 @@
+/* Login */
+.login {
+    background-color: #ffffff;
+    width: auto;
+    min-width: 350px;
+    height: auto;
+    box-sizing: border-box;
+    margin: 0 30%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid rgb(218,220,224); 
+    border-radius: 15px;
+}
+
+@media screen and ((max-width: 425px) or (max-height: 600px)) {
+    .login {
+        border: none; 
+        margin: 0 30%;
+    }
+
+}
+
+.login-group {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    display: block;
+}
+
+.login-group h1 {
+    margin: 0;
+    line-height: 1.4;
+    text-align: center;
+    font-family: 'Times New Roman';
+}
+
+.login-group form {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.login-group button {
+    width: 100%;
+    font-weight: 700;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    position: relative;
+    border: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+}
+
+.login-group button:hover {
+    background-color: #d5d5d5;
+}
+
+.login-group hr {
+    border: 0;
+    border-top: 2px solid rgb(147, 147, 147);
+    margin-bottom: 1rem;
+}
+
+.login-group p {
+    margin: 0;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.login-group a {
+    color: #000000;
+}
+
+.values {
+    margin-bottom: 1rem;
+}
+
+.values label {
+    display: inline-block;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+}
+
+.input-group input {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    margin-bottom: 0;
+    height: 36px;
+}
+
+.values p {
+    text-align: left;
+    color: rgb(255, 62, 62);
+    font-size: 13px;
+}
+
+.account_type {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.code {
+    text-transform: uppercase;
+}
+
+.logdiv {
+    min-height: calc(100vh - 177px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+
+}
+
+/* Register */
+.slide {
+    display: none;
+    height: 100%;
+}
+
+.select:hover {
+    background-color: #f1f1f1;
+}
+
+.option{
+    background: #fff;
+    height: 45px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 20px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 10px;
+    border: 2px solid lightgrey;
+    transition: all 0.3s ease;
+  }
+
+  .slide input[type="radio"]{
+    display: none;
+  }
+
+  #option-1:checked:checked ~ .option-1,
+  #option-2:checked:checked ~ .option-2,
+  #option-3:checked:checked ~ .option-3{
+    border-color: #9cbf9e28;
+    background: #9cbf9e28;
+  }
+  .wrapper .option span{
+    font-size: 20px;
+    color: #808080;
+  }
+
+.slidebutton button{
+    width: 100%;
+    font-weight: 700;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    position: relative;
+    border: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    float:right;
+}
+
+.reg input {
+    background: #fff;
+    height: 45px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 20px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 10px;
+    border: 2px solid lightgrey;
+    transition: all 0.3s ease;
+}
+
+.reg label {
+    font-family: Cambria;
+}
+
+.content input {
+    position: relative;
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    height: 36px;
+    padding: 27px 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border-color: #000000;
+    border-width: 1px;
+    font-size: 15px;
+}
+
+.content input:focus {
+    outline: none;
+    border: 2px solid #1d48bd;
+    font-size: 15px;
+}
+
+.content button {
+    position: relative;
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    height: 60px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border-width: 0px;
+    font-size: 15px;
+    background-color: #d9d9d9;
+    color: #797979;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.content input[type="radio"]{
+    width: 15px;
+  }

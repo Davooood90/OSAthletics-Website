@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+<title>{{ header }}</title>
+{% endblock %}
+
+{% block body %}
+
+    <main>
+        <section class="relative header-background" style="background-image: url('/static/img/osa.jpg');">
+            <div class="header">
+                <div class="container">
+                    <h1><b>Settings</b></h1> 
+                </div>
+            </div> 
+        </section>
+        <section class="white-container" id="edit-settings">
+            <div class="container">
+                <div class="flex center-content">       
+                    <div class="broad-container width-fill"  style="height: 460px;">
+                        <div class="flex center-items">
+                            <div class="flex" style="width: 95%">
+                                <h2 id="{{ area }}">Manage {{ area.title().replace('_', ' ') }}</h2>
+                            </div>
+                            <a  href="/settings" class="flex center-content center-items float-right pointer" style="width: 40px; height: 40px; border: 1px solid rgb(218,220,224); border-radius: 50%; background-color: inherit;">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" style="pointer-events: none; width: 15px;height: 15px;vertical-align: middle;fill: #007015;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1"><path d="M664.377948 511.42322l326.997958 326.997959a108.146166 108.146166 0 0 1-152.954727 152.954727l-326.997959-326.997958-326.997958 326.997958a108.146166 108.146166 0 0 1-152.954728-152.954727l326.997959-326.997959L31.470534 184.425262A108.146166 108.146166 0 0 1 184.425262 31.470534l326.997958 326.997959L838.421179 31.470534a108.146166 108.146166 0 0 1 152.954727 152.954728z"/></svg>
+                            </a>
+                        </div>
+                        <hr style="margin: 0 0 24px">
+                        <!-- Dynamic Form -->
+                        <form action="/settings/edit/{{ area }}" method="POST" class="width-fill setting-form">
+                            {% if area.title().replace('_', ' ') == "Name" %}
+
+                            <input type="text" name="fname" id="fname" placeholder="Enter First Name" value="{{ info.fname }}" class="width-fill">
+                            <input type="text" name="mname" id="mname" placeholder="Enter Middle Name" value="{{ info.mname }}" class="width-fill">
+                            <input type="text" name="lname" id="lname" placeholder="Enter Last Name" value="{{ info.lname }}" class="width-fill">
+                            
+                            {% elif area.title().replace('_', ' ') == "Birthday" %}
+
+                            <input type="text" name="{{ area }}" id="{{ area }}" placeholder="Enter {{ area.title().replace('_', ' ') }}" value="{{ info.birthday }}" class="width-fill">
+
+                            {% elif area.title().replace('_', ' ') == "Gender" %}
+
+                            <input type="text" name="{{ area }}" id="{{ area }}" placeholder="Enter {{ area.title().replace('_', ' ') }}" value="{{ info.gender }}" class="width-fill" >
+                            
+                            {% elif area.title().replace('_', ' ') == "Phone Number" %}
+
+                            <input type="text" name="{{ area }}" id="{{ area }}" placeholder="Enter {{ area.title().replace('_', ' ') }}" value="{{ info.phone_number }}" class="width-fill" >
+
+                            {% elif area.title().replace('_', ' ') == "Email" %}
+
+                            <input type="text" name="{{ area }}" id="{{ area }}" placeholder="Enter {{ area.title().replace('_', ' ') }}" value="{{ email }}" class="width-fill">
+
+
+                            {% elif area.title().replace('_', ' ') == "Password" %}
+                            
+                            <input type="password" name="oldpass" id="oldpass" placeholder="Enter Current Password" class="width-fill">
+                            <input type="password" name="newpass" id="newpass" placeholder="Enter New Password" class="width-fill">
+                            <input type="password" name="confpass" id="confpass" placeholder="Re-Enter New Password" class="width-fill">
+                            
+                            {% endif %} 
+
+
+                            <div class="flex">
+                                <button type="reset" id="cancel" class="pointer" style="margin-right: 10px;">Cancel</button>
+                                <button type="submit" id="save" class="pointer" style="margin-left: 10px;">Save</button>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>        
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+{% endblock %}

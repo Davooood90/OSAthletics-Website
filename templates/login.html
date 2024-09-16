@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/logreg.css') }}">
+<title>Login</title>
+{% endblock %}
+
+{% block body %}
+    <main class="flex center-content center-items">
+        <div class="logdiv">
+            <div class="login">
+                <div class="login-group">
+                    <div class="title">
+                        <h1>Login</h1>
+                    </div>
+                    <form action="/login" method="post">
+                        <div class="values">
+                            <label for="email">Athletics Account (Email)</label>
+                            <div class="input-group">
+                                <input autocomplete="off" autofocus class="" name="email" value="{{ email_in }}" type="text">
+                            </div>
+                        </div>
+                        <div class="values">
+                            <label for="password">Password</label>
+                            <div class="input-group">
+                                <input class="" name="password" value="{{ password_in }}" type="password">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Log In</button>
+                    </form>
+                    <hr>
+                    <p> No Athletics Account? <a href="/register"><b>Register now!</b></a></p>
+                </div>    
+            </div>
+        </div>
+    </main>
+{% endblock %}

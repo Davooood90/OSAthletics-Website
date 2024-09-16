@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/miscellaneous.css') }}">
+<title>Olympian {{ team_name.title().replace('-', ' ') }}</title>
+{% endblock %}
+
+{% block body %}          
+    <main>
+        <div>
+            <!-- Title -->
+            <section class="relative header-background" style="background-image: url('/static/img/osa.jpg');">
+                <div class="header">
+                    <div class="container">
+                        <h2><b>OLYMPIANS</b></h2> 
+                        <h1>{{ team_name.upper().replace('-', ' ') }}</h1>
+                    </div>
+                </div> 
+            </section>
+            <!-- Schedule -->
+            <section class="green-container">
+                <div class="container" style="padding: 25px;">
+                    <div class="title" >
+                        <h1 style="margin-top: 0;">Old Scona {{ team_name.title().replace('-', ' ') }} Schedule</h1> 
+                    </div>
+                    <div class="desktop cal-container">
+                        <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FEdmonton&showTitle=0&src={{ schedule }}"  style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="mobile cal-container">
+                        <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FEdmonton&showTitle=0&mode=AGENDA&src={{ schedule }}" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </section>
+            <!-- Roster -->
+            <section class="white-container">
+                <div class="container">
+                    <div class="title">
+                        <h2>Roster</h2> 
+                    </div>  
+                    <div style="padding: 0 30px 30px">
+                        {% if players|length < 1 and coaches|length < 1%} 
+                        <p style="text-align:center;">Players and coaches will be added at the start of the season.</p>
+                        {% else %}
+                        <div class="text-align text-center flex" style="width: 80%; margin: 0 10%;">
+                            <div style="width: 50%;">
+
+                                <h3 style="margin-top: 0;">Players:</h3>
+                                    {% for player in players %}
+                                    <p>
+                                        {{ player.name }}
+                                    </p>
+
+                                    {% endfor %}
+                                    
+                                </table>
+                            </div>
+                            <div style="width: 50%;">
+                                <h3 style="margin-top: 0;">Coaches:</h3>
+                                    {% for coach in coaches %}
+                                    <p>
+                                        {{ coach.name }}
+                                    </p>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>     
+            </section>
+            <!-- Achievements -->
+            <section class="green-container">
+                <div class="container">
+                    <div>
+                        <div class="title">
+                            <h2>Achievements</h2> 
+                        </div>  
+                        <div style="padding: 0 30px 30px">
+                            {% if achievements|length < 1 %}
+                            <p style="text-align:center;">No achievements have been added yet</p></b>
+                            {% else %}
+                                {% for achievement in achievements %}
+                                    <b><p style="text-align:center; margin: 0; padding: 0 2.5% 20px; font-size: large; line-height: 150%;">{{ achievement.yachieved }} - {{ achievement.achievement }}</p></b>
+                                {% endfor %}
+                            {% endif %}
+                        </div> 
+                    </div>  
+                </div>
+            </section>
+            {% if session.type == "admin"%} 
+                <a href="/manager/sports" class="editbtn">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <!-- Generator: Adobe Illustrator 26.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+
+                    <g id="Layer_1">
+                        <circle class="st7" cx="250" cy="250" r="219.72"/>
+                    </g>
+                    <g id="Layer_2">
+                        <rect x="146.7" y="146.7" class="st8" width="206.59" height="206.59"/>
+                    </g>
+                    <g id="Layer_3">
+                        
+                            <rect x="299.48" y="166.55" transform="matrix(0.5228 0.8525 -0.8525 0.5228 351.5071 -174.5031)" class="st7" width="64.26" height="120.3"/>
+                        <g>
+                            
+                                <rect x="288.79" y="173.29" transform="matrix(0.5228 0.8525 -0.8525 0.5228 352.9828 -149.6614)" class="st0" width="42.75" height="134.3"/>
+                            <polygon class="st0" points="248.12,278.49 259.3,296.71 229.19,302.64 199.08,308.57 218.01,284.42 236.95,260.27 		"/>
+                            <g>
+                                <circle class="st0" cx="390.43" cy="191.22" r="21.37"/>
+                                
+                                    <rect x="359.94" y="186.12" transform="matrix(0.5228 0.8525 -0.8525 0.5228 349.7403 -231.1381)" class="st0" width="42.75" height="21.37"/>
+                            </g>
+                        </g>
+                    </g>
+                    </svg>
+                </a>
+            {% endif %}
+        </div>
+    </main>        
+{% endblock %}

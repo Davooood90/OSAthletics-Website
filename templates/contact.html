@@ -1,0 +1,274 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+
+<title>Contact</title>
+{% endblock %}
+
+{% block body %}
+    <main>
+        <!-- Title -->
+        <section class="relative header-background" style="background-image: url('/static/img/osa.jpg');">
+            <div class="header">
+                <div class="container">
+                    <h1><b>About OSA Athletics</b></h1> 
+                </div>
+            </div> 
+        </section>
+        <!-- Athletics Council Summary -->
+        <section class="green-container">
+            <div class="container">
+                <div class="flex text-align center-items text-center center-content description">
+                    <div class="column">
+                        <div class="title">
+                            <h1>Old Scona Athletics Council</h1> 
+                        </div>
+                        <p style="margin-top: 0;">
+                            The Old Scona Athletics Council is a student led group that consists of student from across the school who all share a passion for athletics. They work with the Head of Athletics of Old Scona to organize athletic opportunities.
+                            <br><br>
+                            The council plays an essential role in ensuring that athletic opportunities are available at Old Scona every year. Through organizing events, we can promote sports and attract students to join school teams and stay active. We believe that it is important for students to have a vibrant life outside of their studies. Athletics offer students a space away from academics where they can hang out with friends, develop new skills, and most importantly, have fun!
+                            <br><br>
+                            We aim to encourage students to stay active by offering them athletic opportunities at Old Scona.
+                        </p>
+                    </div>
+                    <div class="image">
+                        <img src="static/img/council_logo.png">                        
+                    </div>
+                </div> 
+            </div>
+        </section>
+        <!-- Athletic Council Services -->
+        <section class="white-container">
+            <div class="container">
+                <div class="title">
+                    <h1>Services</h1> 
+                </div>
+                <div class="flex text-align center-items text-center center-content description">
+                    <div class="flex column">
+                        <div class="fourths">
+                            <div class="servicepic">
+                                <?xml version="1.0" encoding="utf-8"?>
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" width="100%">
+                                <g id="Layer_1">
+                                </g>
+                                <g id="Layer_2">
+                                    <circle class="st0" cx="250.72" cy="250" r="219.72"/>
+                                    <g>
+                                        <path class="st1" d="M366.83,338.04c0,11-9,20-20,20H153.17c-11,0-20-9-20-20V161.96c0-11,9-20,20-20h193.67c11,0,20,9,20,20
+                                            V338.04z"/>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path class="st2" d="M366.83,198.55c0,11-9,20-20,20H153.17c-11,0-20-9-20-20v-36.59c0-11,9-20,20-20h193.67c11,0,20,9,20,20
+                                                V198.55z"/>
+                                        </g>
+                                        <rect x="133.17" y="166.75" class="st2" width="233.67" height="53.8"/>
+                                    </g>
+                                </g>
+                                <g id="Layer_3">
+                                    <circle cx="170" cy="160.99" r="8.28"/>
+                                    <line class="st3" x1="167" y1="131.6" x2="167" y2="159.99"/>
+                                    <line class="st3" x1="173" y1="131.6" x2="173" y2="159.99"/>
+                                    <g>
+                                        <circle cx="210" cy="160.99" r="8.28"/>
+                                        <line class="st3" x1="207" y1="131.6" x2="207" y2="159.99"/>
+                                        <line class="st3" x1="213" y1="131.6" x2="213" y2="159.99"/>
+                                    </g>
+                                    <g>
+                                        <circle cx="250" cy="160.99" r="8.28"/>
+                                        <line class="st3" x1="247" y1="131.6" x2="247" y2="159.99"/>
+                                        <line class="st3" x1="253" y1="131.6" x2="253" y2="159.99"/>
+                                    </g>
+                                    <g>
+                                        <circle cx="290" cy="160.99" r="8.28"/>
+                                        <line class="st3" x1="287" y1="131.6" x2="287" y2="159.99"/>
+                                        <line class="st3" x1="293" y1="131.6" x2="293" y2="159.99"/>
+                                    </g>
+                                    <g>
+                                        <circle cx="330" cy="160.99" r="8.28"/>
+                                        <line class="st3" x1="327" y1="131.6" x2="327" y2="159.99"/>
+                                        <line class="st3" x1="333" y1="131.6" x2="333" y2="159.99"/>
+                                    </g>
+                                </g>
+                                </svg>
+    
+                            </div>
+                            <h1>Events</h1> 
+                        </div>    
+                        <div class="fourths">
+                            <div class="servicepic">
+                                <?xml version="1.0" encoding="utf-8"?>
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" width="100%">
+                                <g id="Layer_1">
+                                </g>
+                                <g id="Layer_2">
+                                    <circle class="st0" cx="250.33" cy="250.02" r="219.72"/>
+                                </g>
+                                <g id="Layer_4">
+                                </g>
+                                <g id="Layer_5">
+                                    <path class="st2" d="M127.31,204.17c-9.87-22.15-9.88-22.16,8.98-35.95c8.58-6.27,16.96-12.85,25.85-18.65
+                                        c19.09-12.44,39.86-15.41,61.53-8.44c14.72,4.74,28.9,5.43,43.85,0.67c25-7.96,48.88-5.19,70.71,10.28
+                                        c11.92,8.45,23.78,16.99,35.84,25.25c4.73,3.24,6.72,6.23,3.86,12.22c-6.14,12.83-11.47,26.05-17.56,40.09
+                                        c-12.14-3.89-23.89-7.66-37-11.86c0,5.55,0,9.15,0,12.75c0,37.87-0.12,75.75,0.11,113.62c0.04,6.71-1.68,9.69-8.91,11.34
+                                        c-42.8,9.79-85.54,8.54-128.51,1.55c-10.96-1.78-14.31-6.6-14.06-17.81c0.8-36.19,0.3-72.42,0.3-108.63c0-3.6,0-7.2,0-12.17
+                                        c-9.05,2.74-17.17,4.45-24.63,7.67c-7.91,3.41-11.46,0.88-13.8-6.6C132.27,214.46,129.75,209.72,127.31,204.17 M278.06,148.94
+                                        c2.43-6.67-0.89-5.72-5.12-3.96c-17.42,7.26-34.75,6.58-52.03-0.6c-1.27-0.53-2.87-0.25-4.96-0.39
+                                        c3.34,14.05,12.81,19.7,25.05,21.42C255.98,167.52,269.28,164.7,278.06,148.94z"/>
+                                </g>
+                                </svg>
+    
+                            </div>
+                            <h1>Merch</h1> 
+                        </div>               
+                    </div>
+                    <div class="flex column">
+                        <div class="fourths">
+                            <div class="servicepic">
+                                <?xml version="1.0" encoding="utf-8"?>
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" width="100%">
+                                <circle class="st0" cx="250.33" cy="250.02" r="219.72"/>
+                                <g>
+                                    <g>
+                                        <rect x="173.41" y="215.11" class="st2" width="141.93" height="141.93"/>
+                                        <polygon class="st2" points="244.37,142.97 128.45,252.12 360.3,252.12 		"/>
+                                        <polyline class="st2" points="315.34,204.79 291.17,182.03 291.17,162.71 315.34,162.71 		"/>
+                                    </g>
+                                    <g>
+                                        
+                                            <rect x="217.86" y="279.86" transform="matrix(0.7071 0.7071 -0.7071 0.7071 288.1522 -83.0369)" class="st0" width="52.9" height="52.9"/>
+                                        <circle class="st0" cx="225.61" cy="287.61" r="26.45"/>
+                                        <circle class="st0" cx="263.14" cy="287.48" r="26.45"/>
+                                    </g>
+                                </g>
+                                </svg>
+    
+                                
+                            </div>
+                            <h1>Volunteering</h1> 
+                        </div>   
+                        <div class="fourths">
+                            <div class="servicepic">
+                                <?xml version="1.0" encoding="utf-8"?>
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve" width="100%">
+                                <g id="Layer_1">
+                                    <circle class="st0" cx="250.33" cy="250.02" r="219.72"/>
+                                </g>
+                                <g id="Layer_2">
+                                    <g>
+                                        <g>
+                                            
+                                                <rect x="138.86" y="213.21" transform="matrix(0.9863 -0.1651 0.1651 0.9863 -41.7088 47.4734)" class="st0" width="251.86" height="122.98"/>
+                                            
+                                                <rect x="140.5" y="232.95" transform="matrix(0.9863 -0.1651 0.1651 0.9863 -46.5862 28.2696)" class="st2" width="12.61" height="122.98"/>
+                                            
+                                                <rect x="273.81" y="208.46" transform="matrix(0.1651 0.9863 -0.9863 0.1651 557.4653 -2.3439)" class="st2" width="12.61" height="239.25"/>
+                                            
+                                                <rect x="255.62" y="99.73" transform="matrix(0.1651 0.9863 -0.9863 0.1651 435.0396 -75.177)" class="st2" width="12.61" height="239.25"/>
+                                            
+                                                <rect x="376.51" y="206.2" transform="matrix(0.9863 -0.1651 0.1651 0.9863 -36.8647 66.6856)" class="st2" width="12.61" height="97.91"/>
+                                            <circle class="st2" cx="368.51" cy="207.91" r="12.53"/>
+                                            <circle class="st2" cx="384.54" cy="303.65" r="12.53"/>
+                                            <circle class="st2" cx="144.98" cy="245.32" r="12.53"/>
+                                            <circle class="st2" cx="161.14" cy="341.89" r="12.53"/>
+                                            <circle class="st2" cx="264.35" cy="274.74" r="26.91"/>
+                                            <text transform="matrix(0.9863 -0.1651 0.1651 0.9863 257.9538 286.6036)" class="st6 st4 st5">$</text>
+                                        </g>
+                                        <g>
+                                            
+                                                <rect x="138.89" y="213.41" transform="matrix(-0.9863 0.1651 -0.1651 -0.9863 571.3909 502.3171)" class="st0" width="251.86" height="122.98"/>
+                                            
+                                                <rect x="376.51" y="193.67" transform="matrix(-0.9863 0.1651 -0.1651 -0.9863 802.4868 443.6227)" class="st2" width="12.61" height="122.98"/>
+                                            
+                                                <rect x="243.19" y="101.88" transform="matrix(-0.1651 -0.9863 0.9863 -0.1651 72.2058 504.1503)" class="st2" width="12.61" height="239.25"/>
+                                            
+                                                <rect x="261.39" y="210.61" transform="matrix(-0.1651 -0.9863 0.9863 -0.1651 -13.8292 648.7668)" class="st2" width="12.61" height="239.25"/>
+                                            
+                                                <rect x="140.5" y="245.48" transform="matrix(-0.9863 0.1651 -0.1651 -0.9863 340.1932 560.6105)" class="st2" width="12.61" height="97.91"/>
+                                            <circle class="st2" cx="161.1" cy="341.68" r="12.53"/>
+                                            <circle class="st2" cx="145.08" cy="245.95" r="12.53"/>
+                                            <circle class="st2" cx="384.64" cy="304.27" r="12.53"/>
+                                            <circle class="st2" cx="368.48" cy="207.71" r="12.53"/>
+                                            <circle class="st2" cx="265.26" cy="274.86" r="26.91"/>
+                                            <text transform="matrix(-0.9863 0.1651 -0.1651 -0.9863 271.6604 262.9969)" class="st6 st4 st5">$</text>
+                                        </g>
+                                        <g>
+                                            
+                                                <rect x="129.08" y="200.76" transform="matrix(-0.9612 0.2759 -0.2759 -0.9612 572.4758 443.9533)" class="st0" width="251.86" height="122.98"/>
+                                            
+                                                <rect x="363.69" y="167.75" transform="matrix(-0.9612 0.2759 -0.2759 -0.9612 788.8751 347.4996)" class="st2" width="12.61" height="122.98"/>
+                                            
+                                                <rect x="227.42" y="91.31" transform="matrix(-0.2759 -0.9612 0.9612 -0.2759 95.4561 493.7933)" class="st2" width="12.61" height="239.25"/>
+                                            
+                                                <rect x="257.84" y="197.27" transform="matrix(-0.2759 -0.9612 0.9612 -0.2759 32.4164 658.2192)" class="st2" width="12.61" height="239.25"/>
+                                            
+                                                <rect x="133.66" y="246.1" transform="matrix(-0.9612 0.2759 -0.2759 -0.9612 355.909 540.0315)" class="st2" width="12.61" height="97.91"/>
+                                            <circle class="st2" cx="159.53" cy="340.37" r="12.53"/>
+                                            <circle class="st2" cx="132.75" cy="247.07" r="12.53"/>
+                                            <circle class="st2" cx="377.38" cy="277.83" r="12.53"/>
+                                            <circle class="st2" cx="350.37" cy="183.72" r="12.53"/>
+                                            <circle class="st2" cx="255.44" cy="262.15" r="26.91"/>
+                                            <text transform="matrix(-0.9612 0.2759 -0.2759 -0.9612 260.449 249.6413)" class="st6 st4 st5">$</text>
+                                        </g>
+                                        <g>
+                                            
+                                                <rect x="114.86" y="188.3" transform="matrix(-0.9191 0.3939 -0.3939 -0.9191 560.5158 384.536)" class="st0" width="251.86" height="122.98"/>
+                                            
+                                                <rect x="344.44" y="141.18" transform="matrix(-0.9191 0.3939 -0.3939 -0.9191 752.9717 250.7846)" class="st2" width="12.61" height="122.98"/>
+                                            
+                                                <rect x="206.96" y="81.93" transform="matrix(-0.3939 -0.9191 0.9191 -0.3939 112.0106 476.9676)" class="st2" width="12.61" height="239.25"/>
+                                            
+                                                <rect x="250.38" y="183.25" transform="matrix(-0.3939 -0.9191 0.9191 -0.3939 79.4106 658.1183)" class="st2" width="12.61" height="239.25"/>
+                                            
+                                                <rect x="124.45" y="247.77" transform="matrix(-0.9191 0.3939 -0.3939 -0.9191 367.8278 517.9534)" class="st2" width="12.61" height="97.91"/>
+                                            <circle class="st2" cx="155.84" cy="339.24" r="12.53"/>
+                                            <circle class="st2" cx="117.6" cy="250.02" r="12.53"/>
+                                            <circle class="st2" cx="364.16" cy="249.96" r="12.53"/>
+                                            <circle class="st2" cx="325.59" cy="159.97" r="12.53"/>
+                                            <circle class="st2" cx="241.21" cy="249.65" r="26.91"/>
+                                            <text transform="matrix(-0.9191 0.3939 -0.3939 -0.9191 244.6157 236.6079)" class="st6 st4 st5">$</text>
+                                        </g>
+                                    </g>
+                                </g>
+                                <g id="Layer_3">
+                                </g>
+                                </svg>
+    
+                            </div>
+                            <h1>Fundraising</h1> 
+                        </div>  
+                    </div>
+                                        
+                </div> 
+            </div>
+        </section>
+        <!-- School Information -->
+        <section class="green-container">
+            <div class="container">
+                <div class="flex text-align center-items text-center center-content description">
+                    <div class="column">
+                        <div class="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2372.1308813011083!2d-113.50419918444028!3d53.519719369412186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53a0221a9f857f29%3A0x64245d328f55af70!2sOld%20Scona%20Academic!5e0!3m2!1sen!2sca!4v1660798286088!5m2!1sen!2sca" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                    <div class="column" style="padding: 5% 0;">
+                        <div class="title">
+                            <h1 style="margin: 0;">Contact Us</h1> 
+                        </div>
+                        <p><b>Head of Athletics</b>: Jeff Karas | jeff.karas@epsb.ca</p> 
+                        <p><b>Athletic Council Email</b>: athletics.oldscona@gmail.com</p>
+                        <p><b>School Phone</b>: (780) 433-0627</p>
+                        <p><b>Directions</b>: 10523 84 Ave NW, Edmonton, AB T6E 2H5</p> 
+                    </div>
+                    
+                </div> 
+            </div>
+            
+        </section>
+    </main>
+{% endblock %}

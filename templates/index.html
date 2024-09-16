@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<title>Home</title>
+{% endblock %}
+
+{% block body %}
+    <main>
+        <!-- Title -->
+        <section class="relative header-background" style="background-image: url('/static/img/osa.jpg');">
+            <div class="header">
+                <div class="container">
+                    <h2>WELCOME TO THE</b></h2> 
+                    <h1 class="title-size"><b>HOME OF THE OLYMPIANS</b></h1> 
+                </div>
+            </div> 
+        </section>
+        <!-- Highlights -->
+        <section class="white-container">
+            <div class="container">
+                <div class="title">
+                    <h1>Highlights</h1> 
+                </div>
+                <div class="flex text-center center-content highlights ">
+                    {% if highlights|length < 1 %}
+                        <div class="slide">
+                            <div class="text-align center-content fit">
+                                <div class="highlight-image" style="background-image: url(static/img/school_name.png);">
+                                </div>
+                                <div class="highlight-info">
+                                    <div class="flex center-content center-items height-fill">
+                                        <div>
+                                            <h1 style="margin-top: 0;">Coming Soon</h1> 
+                                            <p>No highlights have been currently added. Stay tuned!</p>
+                                        </div>
+                                    </div>                             
+                                </div>
+                            </div>  
+                        </div>
+                    {% else %}
+                        <div style="position: relative;">
+                            <div class="flex center-content center-items height-fill"  > 
+                                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                            </div>
+                        </div >
+                        {% for highlight in highlights %}
+                        <div class="slide">
+                            <a class="notextdecor" href="{{ highlight.link }}" target="_blank" style="color: var(--osa-green)">
+                                <div class="text-align center-content fit">
+                                    <div class="highlight-image" style="background-image: url(static/img/school_name.png);">
+                                    </div>
+                                    <div class="highlight-info">
+                                        <div class="flex center-content center-items height-fill">
+                                            <div>
+                                                <h1 style="margin-top: 0;">{{ highlight.title }}</h1> 
+                                                <p>{{ highlight.description }}</p>
+                                            </div>
+                                        </div>                             
+                                    </div>
+                                </div>  
+                            </a> 
+                        </div>
+                        {% endfor %}
+                        <div class="slide">
+
+                            <div class="fit">
+                                <div class="highlight-image" style="background-image: url(static/img/OSAthletics_collage.png);">
+                                </div>
+                                <div class="highlight-info">
+                                    <div class="flex center-content center-items height-fill">
+                                        <div>
+                                            <h1 style="margin-top: 0;">More Highlights</h1> 
+                                            <p>Visit the highlights page or click the learn more button to view all of the highlights of this year!</p>
+                                            <a href="/news#highlights">
+                                                <button class="noborder more" >View More</button>
+                                            </a>  
+                                        </div>
+                                    </div>                             
+                                </div>
+                            </div>  
+                        </div>
+                        <div style="position: relative;">
+                            <div class="flex center-content center-items height-fill"  > 
+                                <a class="next" onclick="plusSlides(1)">❯</a> 
+                            </div>
+                        </div >
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        <!-- News and Events -->
+        <section class="green-container">
+            <div class="container">
+                <div class="text-align center-items text-center center-content flex home">                       
+                    <div class="column" style="margin: 0 2.5% 0 0;">
+                        <div class="title">
+                            <h1>News and Events</h1> 
+                        </div>
+                        <h3 style="margin: 0;">Visit the news and events tab or click the learn more button below for more information about the schedule, events hosted by Athletics Council, and other OSAthletics news.</h2> 
+                        <form action="/news">
+                            <div style="margin: 1.5rem 0">
+                                <button class="pointer noborder  more" type="submit" name="redirect" value="events">Learn More</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="calendar">
+                        <div class="date">      
+                            <div class="flex center-content center-items height-fill">
+                                <p>
+                                    {{ month }} {{ day }}, {{ year }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <ul class="event-info">  
+                            {% if events|length < 1 %}
+                                <li>There are no events for today.</li>
+                            {% else %}
+                                {% for event in events %}
+                                    <p style="color: #007015;"><b>{{ event.summary }}</b> | {{ event.description }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Sport Information -->
+        <section class="white-container">
+            <div class="container">
+                <div class="text-align text-center center-items center-content flex home">                       
+                    <div class="image">
+                        <img src="static/img/OSAthletics_collage.png" class="team-image">
+                    </div>
+                    <div class="column">
+                        <div class="title">
+                            <h1>Teams</h1> 
+                        </div>
+                        <h3>Old Scona currently offers the following inter-school athletic sports teams:</h3> 
+                        <p>Men's and Women's Volleyball
+                            
+                            <br>Men's and Women's Basketball
+                            
+                            <br>Men's and Women's Team Handball
+                            
+                            <br>Men's and Women's Soccer
+                            
+                            <br>Badminton
+                            
+                            <br> Swimming
+                            
+                            <br>Cross Country Running
+                            
+                            <br>Track and Field 
+                        </p>                                                 
+                    </div>                    
+                </div>
+            </div>
+        </section>
+        <!-- Vision -->
+        <section class="green-container">
+            <div class="container">
+                <div class="title">
+                    <h1 style="margin-bottom: 0;">Our Vision</h1> 
+                </div>  
+                <div class="text-align text-center center-content center-items flex home"> 
+                    <div class="left-logo">
+                        <img  src="static/img/asaa_logo.png">
+                    </div>      
+                    <div class="statement">
+                        <p>Despite not having a gym, Old Scona has a history of excellence and success in many different sports. We are proud to be a part of the Metro Edmonton High School Athletic Association and the Alberta Schools Athletic Association. <br> <br> We aim to encourage students to live stay active through by offering them athletic oppertunities.</p>
+                    </div>
+                    <div class="right-logo">
+                        <img  src="static/img/metroathletics_logo.png">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/highlights.js') }}"></script>
+{% endblock %}

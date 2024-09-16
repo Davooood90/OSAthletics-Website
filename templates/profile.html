@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/miscellaneous.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+
+<title>{{ header }}</title>
+{% endblock %}
+
+{% block body %}
+
+<main>
+    <!-- Title -->
+    <section class="relative header-background" style="background-image: url('/static/img/osa.jpg');">
+        <div class="header">
+            <div class="container">
+                {% if header == "Profile" %}
+                <h1><b>Welcome {{ session.name }}</b></h1>
+                {% else %}
+                <h1><b>{{ header }}</b></h1>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <!-- Personal Calendar -->
+    <section class="green-container">
+        <div class="container" style="padding: 25px;">
+            <div class="title">
+                <h1 style="margin-top: 0;">Personal Athletics Calendar</h1>
+            </div>
+            <div class="desktop cal-container">
+                <iframe
+                    src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FEdmonton&title=Old%20Scona%20Athletics%20Calendar&src=b2xkc2NvbmF0aGxldGljc0BnbWFpbC5jb20&"
+                    style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>
+            <div class="mobile cal-container">
+                <iframe
+                    src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FEdmonton&title=Old%20Scona%20Athletics%20Calendar&mode=AGENDA&src=b2xkc2NvbmF0aGxldGljc0BnbWFpbC5jb20&"
+                    style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- Forms -->
+    <section class="white-container">
+        <div class="container">
+            <div class="title">
+                <h1>Forms</h1>
+            </div>
+            {% if forms|length < 1 %} 
+                <div class="flex center-content">
+                    <p>No Forms Have Been Added</p>
+                </div>
+            {% else %}
+                {% for form in forms %}
+                <a href="{{form.link}}" target="_blank" class="form">
+                    <div class="form-title">
+                        {{ form.title }}
+                    </div>
+                    <div class="form-date flex center-content center-items">
+                        <b><p style="margin: 0;">Due Date: {{ form.date }}</p></b>
+                    </div>                    
+                </a>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </section>
+</main>
+{% endblock %}

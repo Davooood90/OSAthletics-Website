@@ -1,0 +1,519 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/manager.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+
+<title>OSAthletic Manager</title>
+{% endblock %}
+
+{% block body %}
+    <main>
+        <section class="relative header-background" style="background-image: url('/static/img/osa.jpg');">
+            <div class="header">
+                <div class="container">
+                    <h1><b>OSAthletic Manager</b></h1> 
+                </div>
+            </div> 
+        </section>
+        <section class="white-container">
+            <div class="container">  
+                <div class="flex center-content">  
+                     <!-- Specific User Management  -->
+                    {% if request.args.get("email") != None %} 
+                    <div class="broad-container" style="padding-bottom: 24px;">
+                        <div class="flex center-content center-items">
+                            <a class="notextdecor flex center-content center-items float-right" style="color: black; background-color: inherit; width: 40px; height: 40px; border-radius: 50%;">
+                                
+                            </a>
+                            <div class="flex center-content text-center manage-head">
+                                <h2>Viewing {{ user.getEmail() }}</h2>
+                            </div>
+                            
+                            <a  href="/manager/users" class="flex center-content center-items float-right pointer" style="width: 40px; height: 40px; border: 1px solid rgb(218,220,224); border-radius: 50%; background-color: inherit;">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" style="pointer-events: none; width: 15px;height: 15px;vertical-align: middle;fill: #007015;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1"><path d="M664.377948 511.42322l326.997958 326.997959a108.146166 108.146166 0 0 1-152.954727 152.954727l-326.997959-326.997958-326.997958 326.997958a108.146166 108.146166 0 0 1-152.954728-152.954727l326.997959-326.997959L31.470534 184.425262A108.146166 108.146166 0 0 1 184.425262 31.470534l326.997958 326.997959L838.421179 31.470534a108.146166 108.146166 0 0 1 152.954727 152.954728z"/></svg>
+                            </a>
+                        </div>
+                        <hr style="margin: 0">
+                        <div class="center-content" style="padding: 10px">
+                            <div class="manage-form center-content " style="cursor: default;">
+                                <div class="flex center-content center-items" style="width: 28%;">
+                                    <label for="first_name" style="margin-right: 5%; white-space: nowrap;">First Name:</label>
+                                    <p id="first_name" class="user_info">{{ user.getname("f") }}</p>    
+                                </div>
+                                <div class="flex center-content center-items" style="width: 28%;">
+                                    <label for="middle_name" style="margin-right: 5%; white-space: nowrap;">Middle Name:</label>
+                                    <p id="middle_name" class="user_info">{{ user.getname("m") }}</p>    
+                                </div>
+                                <div class="flex center-content center-items" style="width: 28%;">
+                                    <label for="last_name" style="margin-right: 5%; white-space: nowrap;">Last Name:</label>
+                                    <p id="last_name" class="user_info">{{ user.getname("l") }}</p>    
+                                </div>
+                                <div class="flex center-content center-items" style="width: 20%;">
+                                    <label for="middle_name" style="margin-right: 5%; white-space: nowrap;">Gender:</label>
+                                    <p id="middle_name" class="user_info">{{ user.getgender() }}</p>    
+                                </div>
+                            </div>
+                            <div class="manage-form center-content " style="cursor: default;">
+                                <div class="flex center-content center-items" style="width: 30%;">
+                                    <label for="first_name" style="margin-right: 5%; white-space: nowrap;">Birthday:</label>
+                                    <p id="first_name" class="user_info">{{ user.getbirthday() }}</p>    
+                                </div>
+                                <div class="flex center-content center-items" style="width: 30%;">
+                                    <label for="last_name" style="margin-right: 5%; white-space: nowrap;">Phone Number:</label>
+                                    <p id="last_name" class="user_info">{{ user.getphonenumber() }}</p>    
+                                </div>
+                                {% if request.args.get("type") != "coach" %}
+                                    <div class="flex center-content center-items" style="width: 30%;">
+                                        <label for="last_name" style="margin-right: 5%; white-space: nowrap;">Parent Email:</label>
+                                        <p id="last_name" class="user_info">{{ user.getpemail() }}</p>    
+                                    </div>
+                                {% endif %}
+                            </div>  
+                        </div>  
+                        <hr style="margin: 0">   
+                        <form action="/manager/users/{{ user.getEmail() }}" method="POST" class="manage-form center-content center-items" style="padding: 24px 0" onreset="discard()" id="manage_sport" enctype="multipart/form-data">
+                            <input type="text" name="title" id="title" placeholder="Enter Title" style="border: 1px solid rgb(218,220,224); color: var(--osa-green); font-size: 16px; border-radius: 15px; padding: 5px; width: 20%; margin-right: 2.5%; border-width: 1px;">
+                            <label for="date" style="margin-right: 1%; white-space: nowrap;" id="date-label">Due Date:</label>
+                            <input type="date" name="date" id="date" style="border: 1px solid rgb(218,220,224); color: var(--osa-green); font-size: 16px; border-radius: 15px; padding: 5px; width: auto; margin-right: 2.5%; border-width: 1px;">
+                            <label for="file" style="margin-right: 1%; white-space: nowrap;" id="file-label">Upload Form:</label>
+                            <input type="file" name="file" id="file">
+                            <button type="submit" id="manage" class="pointer" style="border: 1px solid rgb(218,220,224); color: var(--osa-green); font-size: 16px; border-radius: 15px; padding: 5px 10px; width: auto; margin-right: 2.5%; border-width: 1px; background-color: inherit;">Add</button>
+                        </form>  
+                        <div style="border: 1px solid rgb(218,220,224); height: 125px; max-height: 285px; overflow: auto; margin: auto 24px; padding: 24px; border-radius: 10px;">
+                            <div class="" id="players">
+                                <div class="flex center-content">
+                                    <u><p style="font-size: large; margin: 0px">View Forms</p></u>
+                                </div>
+                                {% if forms|length < 1 %}
+                                <div class="flex center-content">
+                                    <p>No Forms Have Been Added</p>
+                                </div>                               
+                                {% else %}
+                                    {% for form in forms %}
+                                        <div class="flex" style="padding: 10px; margin: 0 10%;">
+                                            <div class="text-center" style="width: 50%;">
+                                                {{ form.title }}
+
+                                            </div>
+                                            <div class="flex center-items" style="width: 35%;">
+                                                Due Date: {{ form.date }}
+
+                                            </div>
+                                            <div class="flex" style="width: 15%;">
+                                                <div style="margin: auto;">
+                                                    <a href="/delete/users/{{form.formId}}/forms"><button class="noborder pointer" style="padding: 5px; border-radius: 15px;">Delete</button></a>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div> 
+                        
+                    {% elif request.path == "/manager/users" %}
+                        <!-- All Users -->
+                        <div class="broad-container width-fill" style="padding-bottom: 24px;">
+                            <div class="flex center-items width-fill center-content">
+                                <a href="/manager/news" class="notextdecor flex center-content center-items pointer" style="color: black; background-color: inherit; width: 40px; height: 40px; border: 1px solid rgb(218,220,224); border-radius: 50%;" onclick="plusSlides(-1)">
+                                    ❮
+                                </a>
+                                <div class="flex center-content text-center manage-head">
+                                    <h2>User Account Management</h2>
+                                </div>
+                                
+                                <a href="/manager/sports" class="notextdecor flex center-content center-items pointer" style="color: black; background-color: inherit; width: 40px; height: 40px; border: 1px solid rgb(218,220,224); border-radius: 50%;" onclick="plusSlides(1)">
+                                    ❯
+                                </a>
+                            </div>
+                            <hr style="margin: 0">  
+                            <div class="select-menu center-content center-items" style="padding: 24px; ">
+                                <label for="accounts">Selected a User Group to View: </label>
+                                <select onchange="change('users')" id="accounts" name="accounts" class="text-center pointer">
+                                    <option value="everyone">All</option>
+                                    <option value="player-accounts">Students</option>
+                                    <option value="coach-accounts">Coaches/Teachers</option>
+                                    <option value="parent-accounts">Parents</option>
+                                </select>
+                            </div>  
+                            <div class="preview">
+                                <div class="flex center-content">
+                                    <u><p style="font-size: large; margin: 0px">View Accounts</p></u>
+                                </div>
+                                <div id="all-accounts">
+                                    {% if accounts|length < 1 %}
+                                    <div class="flex center-content">
+                                        <p>There Are No Accounts</p>
+                                    </div>                               
+                                    {% else %}
+                                        {% for account in accounts %}
+                                            <div class="sub-display">
+                                                <div id="account_email">
+                                                    <p style="margin: 0;">{{ account.email }}</p>
+                                                </div>
+                                                <div id="manage_account">
+                                                    <div style="width: 50%;">
+                                                        {{ account.type.title() }}
+                                                    </div>
+                                                    <div class="flex" style="width: 50%;">
+                                                        <div style="margin: auto;">
+                                                            <a href="/manager/users?email={{ account.email }}&type={{ account.type }}" class="noborder pointer notextdecor" style="font-size: small; padding: 5px; border-radius: 15px; background-color: buttonface; color: black;">More</a>
+                                                        </div>
+                                                    </div>    
+                                                </div>
+                                            </div> 
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div id="s-accounts" class="hide">
+                                    {% if students|length < 1 %}
+                                    <div class="flex center-content">
+                                        <p>There Are No Student Accounts</p>
+                                    </div>                               
+                                    {% else %}
+                                        {% for student in students %}
+                                            <div class="sub-display">
+                                                <div id="account_email">
+                                                    <p style="margin: 0;">{{ student.email }}</p>
+                                                </div>
+                                                <div id="manage_account">
+                                                    <div style="width: 50%;">
+                                                        {{ student.type.title() }}
+                                                    </div>
+                                                    <div class="flex" style="width: 50%;">
+                                                        <div style="margin: auto;">
+                                                            <a href="/manager/users?email={{ student.email }}&type={{ student.type }}" class="noborder pointer notextdecor" style="font-size: small; padding: 5px; border-radius: 15px; background-color: buttonface; color: black;">More</a>
+                                                        </div>
+                                                    </div>    
+                                                </div>
+                                            </div> 
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div id="p-accounts" class="hide">
+                                    {% if parents |length < 1 %}
+                                    <div class="flex center-content">
+                                        <p>There Are No Parent Accounts</p>
+                                    </div>                               
+                                    {% else %}
+                                        {% for parent in parents %}
+                                            <div class="sub-display">
+                                                <div id="account_email">
+                                                    <p style="margin: 0;">{{ parent.email }}</p>
+                                                </div>
+                                                <div id="manage_account">
+                                                    <div style="width: 50%;">
+                                                        {{ parent.type.title() }}
+                                                    </div>
+                                                    <div class="flex" style="width: 50%;">
+                                                        <div style="margin: auto;">
+                                                            <a href="/manager/users?email={{ parent.email }}&type={{ parent.type }}" class="noborder pointer notextdecor" style="font-size: small; padding: 5px; border-radius: 15px; background-color: buttonface; color: black;">More</a>
+                                                        </div>
+                                                    </div>    
+                                                </div>
+                                            </div> 
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div id="c-accounts" class="hide">
+                                    {% if coaches|length < 1 %}
+                                    <div class="flex center-content">
+                                        <p>There Are No Coach/Teacher Accounts</p>
+                                    </div>                               
+                                    {% else %}
+                                        {% for coach in coaches %}
+                                            <div class="sub-display">
+                                                <div id="account_email">
+                                                    <p style="margin: 0;">{{ coach.email }}</p>
+                                                </div>
+                                                <div id="manage_account">
+                                                    <div style="width: 50%;">
+                                                        {{ coach.type.title() }}
+                                                    </div>
+                                                    <div class="flex" style="width: 50%;">
+                                                        <div style="margin: auto;">
+                                                            <a href="/manager/users?email={{ coach.email }}&type={{ coach.type }}" class="noborder pointer notextdecor" style="font-size: small; padding: 5px; border-radius: 15px; background-color: buttonface; color: black;">More</a>
+                                                        </div>
+                                                    </div>    
+                                                </div>
+                                            </div> 
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>  
+                        </div> 
+                    <!-- <Manage Sports -->
+                    {% elif request.path == "/manager/sports" %}
+                        <div class="broad-container width-fill" style="padding-bottom: 24px;">
+                            <div class="flex center-items width-fill center-content">
+                                <a href="/manager/users" class="notextdecor flex center-content center-items float-right pointer" style="color: black; background-color: inherit; width: 40px; height: 40px; border: 1px solid rgb(218,220,224); border-radius: 50%;" onclick="plusSlides(-1)">
+                                    ❮
+                                </a>
+                                <div class="flex center-content text-center manage-head">
+                                    <h2>Sport Team Management</h2>
+                                </div>
+                                <a href="/manager/news" class="notextdecor flex center-content center-items float-right pointer" style="color: black; background-color: inherit; width: 40px; height: 40px; border: 1px solid rgb(218,220,224); border-radius: 50%;" onclick="plusSlides(-1)">
+                                    ❯
+                                </a>
+                            </div>
+                            <hr style="margin: 0">  
+                            <form action="/manager/sports/add" method="POST" class="manage-form center-content" style="padding: 24px" onreset="discard()" id="manage_sport">
+                                <select id="Sport" name="sport" class="select-menu text-center pointer">
+                                    <option value="mens-volleyball">Men's Volleyball</option>
+                                    <option value="womens-volleyball">Women's Volleyball</option>
+                                    <option value="mens-basketball">Men's Basketball</option>
+                                    <option value="womens-basketball">Women's Basketball</option>
+                                    <option value="mens-handball">Men's Handball</option>
+                                    <option value="womens-handball">Women's Handball</option>
+                                    <option value="mens-soccer">Men's Soccer</option>
+                                    <option value="womens-soccer">Women's Soccer</option>
+                                    <option value="badminton">Badminton</option>
+                                    <option value="swim">Swim</option>
+                                    <option value="cross-country-running">Cross Country Running</option>
+                                    <option value="track-and-field">Track and Field</option>
+                                </select>
+                                <select onchange="change('sport')" id="Editing" name="role" class="text-center pointer">
+                                    <option value="player">Players</option>
+                                    <option value="coach">Coaches</option>
+                                    <option value="achievements">Achievements</option>
+                                </select>
+                                <input type="number" min="1900" max="2099" name="year" step="1" id="year" placeholder="Year" class="hide" style="border-width: 1px;">
+                                <input type="text" name="name" id="name" placeholder="Enter Name" style="border-width: 1px;">
+                                <button type="reset" id="cancel" class="pointer hide">Cancel</button>
+                                <button type="submit" id="manage" class="pointer"> Add</button>
+                            </form>  
+                            <div class="preview">
+                                <div class="" id="players">
+                                    <div class="flex center-content">
+                                        <u><p style="font-size: large; margin: 0px">View Players</p></u>
+                                    </div>
+                                    {% if players|length < 1 %}
+                                    <div class="flex center-content">
+                                        <p>No Players Have Been Added</p>
+                                    </div>                               
+                                    {% else %}
+                                        {% for player in players %}
+                                            <div class="flex" style="padding: 10px; margin: 0 10%;">
+                                                <div id="player_name">
+                                                    {{ player.name }}
+                                                </div>
+                                                <div id="player_sport">
+                                                    {{ player.sport.title().replace('-', ' ').replace('s ', "'s ") }}
+                                                </div>
+                                                <div id="options" class="flex">
+                                                    <div style="margin: auto;">
+                                                        <button class="noborder pointer" onclick="edit('sport', '{{ player.rosterId }}','{{ player.name }}', '{{ player.sport }}')" style="padding: 5px; border-radius: 15px;">Edit</button>
+                                                    </div>
+                                                    <div style="margin: auto;">
+                                                        <a href="/delete/sports/{{player.rosterId}}/roster"><button class="noborder pointer" style="padding: 5px; border-radius: 15px;">Delete</button></a>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="hide" id="coaches">
+                                    <div class="flex center-content">
+                                        <u><p style="font-size: large; margin: 0px">View Coaches</p></u>
+                                    </div>
+                                    {% if coaches|length < 1 %}
+                                    <div class="flex center-content" id="display">
+                                        <p>No Coaches Have Been Added</p>
+                                    </div>                               
+                                    {% else %}
+                                        {% for coach in coaches %}
+                                        <div class="sub-display">
+                                            <div id="player_name">
+                                                {{ coach.name }}
+                                            </div>
+                                            <div id="player_sport">
+                                                {{ coach.sport.title().replace('-', ' ').replace('s ', "'s ") }}
+                                            </div>
+                                            <div id="options" class="flex">
+                                                <div style="margin: auto;">
+                                                    <button class="noborder pointer" onclick="edit('sport', '{{ coach.rosterId }}','{{ coach.name }}', '{{ coach.sport }}')" style="padding: 5px; border-radius: 15px;">Edit</button>
+                                                </div>
+                                                <div style="margin: auto;">
+                                                    <a href="/delete/sports/{{coach.rosterId}}/roster"><button class="noborder pointer" style="padding: 5px; border-radius: 15px;">Delete</button></a>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="hide" id="achievements">
+                                    <div class="flex center-content">
+                                        <u><p style="font-size: large; margin: 0px">View Achievments</p></u>
+                                    </div>
+                                    {% if achievements|length < 1 %}
+                                    <div class="flex center-content" id="display">
+                                        <p>No Players Have Been Added</p>
+                                    </div>                               
+                                    {% else %}
+                                        {% for achievement in achievements %}
+                                        <div class="sub-display">
+                                            <div  id="player_name">
+                                                {{ achievement.yachieved }} - {{ achievement.achievement }}
+                                            </div>
+                                            <div id="player_sport">
+                                                {{ achievement.sport.title().replace('-', ' ').replace('s ', "'s ") }}
+                                            </div>
+                                            <div id="options" class="flex">
+                                                <div style="margin: auto;">
+                                                    <button class="noborder pointer" onclick="edit('sport', '{{ achievement.achievementId }}','{{ achievement.achievement }}', '{{ achievement.sport }}', '{{ achievement.yachieved }}')" style="padding: 5px; border-radius: 15px;">Edit</button>
+                                                </div>
+                                                <div style="margin: auto;">
+                                                    <a href="/delete/sports/{{achievement.achievementId}}/achievements"><button class="noborder pointer" style="padding: 5px; border-radius: 15px;">Delete</button></a>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div> 
+                    <!-- Manage News and Events -->
+                    {% elif request.path == "/manager/news" %}
+                        <div class="broad-container width-fill" style="padding-bottom:24px">
+                            <div class="flex center-content center-items">
+                                <a href="/manager/sports" class="notextdecor flex center-content center-items float-right pointer" style="color: black; background-color: inherit; width: 40px; height: 40px; border: 1px solid rgb(218,220,224); border-radius: 50%;" onclick="plusSlides(-1)">
+                                    ❮
+                                </a>
+                                <div class="flex center-content text-center manage-head">
+                                    <h2>News and Events Management</h2>
+                                </div>
+                                
+                                <a href="/manager/users" class="notextdecor flex center-content center-items float-right pointer" style="color: black; background-color: inherit; width: 40px; height: 40px; border: 1px solid rgb(218,220,224); border-radius: 50%;" onclick="plusSlides(-1)">
+                                    ❯
+                                </a>
+                            </div>
+                            <hr style="margin: 0">    
+                            <form action="/manager/news/add" method="POST" class="manage-form center-items" style="padding: 24px; display: block;" onreset="discard()" id="manage_news">
+                                <div class="rows center-content center-items">
+                                    <select onchange="change('news')" id="Message" name="message" class="text-center pointer">
+                                        <option value="event">Schedule Event</option>
+                                        <option value="info">Add Information</option>
+                                        <option value="high">Add Highlight</option>
+                                    </select>
+                                    <label class="" for="sdate" style="margin-right: .5%; white-space: nowrap" id="sdate-label">Start Date/Time:</label>
+                                    <input type="datetime-local" name="sdate" id="sdate">
+                                    <label class="" for="edate" style="margin-right: .5%; white-space: nowrap" id="edate-label">End Date/Time:</label>
+                                    <input type="datetime-local" name="edate" id="edate">
+                                </div>
+                                
+                                <div class="rows center-content extra">
+                                    <input type="text" name="title" id="title" placeholder="Enter Title" style="border-width: 1px;">
+                                    <input type="text" name="desc" id="desc" placeholder="Enter Description" style="border-width: 1px">
+                                    
+                                    <input class="hide" type="text" name="link" id="link" placeholder="Enter Link" style="border-width: 1px;">
+                                    
+                                    <button type="reset" id="cancel" class="pointer hide">Cancel</button>
+                                    <button type="submit" id="manage" class="pointer">Add</button>
+                                </div>
+                                                               
+                            </form>  
+                            <div class="preview">
+                                <div class="" id="events">
+                                    <div class="flex center-content">
+                                        <u><p style="font-size: large; margin: 0px">View Events</p></u>
+                                    </div>
+                                    {% if events|length < 1 %}
+                                    <div class="flex center-content">
+                                        <p>No Events Have Been Added</p>
+                                    </div>                               
+                                    {% else %}
+                                        {% for event in events %}
+                                            <div class="sub-display">
+                                                <div id="player_sport">
+                                                    {{ event.summary }}
+                                                </div>
+                                                <div id="player_name">
+                                                    {{ event.description }}
+                                                </div>
+                                                <div id="options" class="flex">
+                                                    <div style="margin: auto;">
+                                                        <button class="noborder pointer" onclick="edit('news', '{{ event.id }}', '{{ event.summary }}', '{{ event.description }}', ['{{ event.start.dateTime }}', '{{ event.end.dateTime }}'], null)" style="padding: 5px; border-radius: 15px;">Edit</button>
+                                                    </div>
+                                                    <div style="margin: auto;">
+                                                        <a href="/delete/news/{{event.id}}/events/"><button class="noborder pointer" style="padding: 5px; border-radius: 15px;">Delete</button></a>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>  
+                                <div class="hide" id="information">
+                                    <div class="flex center-content">
+                                        <u><p style="font-size: large; margin: 0px">View Information</p></u>
+                                    </div>
+                                    {% if info|length < 1 %}
+                                    <div class="flex center-content">
+                                        <p>No Information Have Been Added</p>
+                                    </div>                               
+                                    {% else %}
+                                        {% for i in info %}
+                                            <div class="sub-display">
+                                                <div id="player_sport">
+                                                    {{ i.title }}
+                                                </div>
+                                                <div id="player_name">
+                                                    {{ i.description }}
+                                                </div>
+                                                <div id="options" class="flex">
+                                                    <div style="margin: auto;">
+                                                        <button class="noborder pointer" onclick="edit('news', '{{ i.infoId }}', '{{ i.title }}', '{{ i.description }}')" style="padding: 5px; border-radius: 15px;">Edit</button>
+                                                    </div>
+                                                    <div style="margin: auto;">
+                                                        <a href="/delete/news/{{i.infoId}}/information/"><button class="noborder pointer" style="padding: 5px; border-radius: 15px;">Delete</button></a>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="hide" id="highlights">
+                                    <div class="flex center-content">
+                                        <u><p style="font-size: large; margin: 0px">View Highlights</p></u>
+                                    </div>
+                                    {% if highlights|length < 1 %}
+                                    <div class="flex center-content">
+                                        <p>No Highlights Have Been Added</p>
+                                    </div>                               
+                                    {% else %}
+                                        {% for highlight in highlights %}
+                                            <div class="sub-display">
+                                                <div id="player_sport">
+                                                    {{ highlight.title }}
+                                                </div>
+                                                <div id="player_name">
+                                                    {{ highlight.description }}
+                                                </div>
+                                                <div id="options" class="flex">
+                                                    <div style="margin: auto;">
+                                                        <button class="noborder pointer" onclick="edit('news', '{{ highlight.highlightId }}', '{{ highlight.title }}', '{{ highlight.description }}', null, '{{ highlight.link }}')" style="padding: 5px; border-radius: 15px;">Edit</button>
+                                                    </div>
+                                                    <div style="margin: auto;">
+                                                        <a href="/delete/news/{{highlight.highlightId}}/highlights/"><button class="noborder pointer" style="padding: 5px; border-radius: 15px;">Delete</button></a>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div> 
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </main>        
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/highlights.js') }}"></script>
+<script src="{{ url_for('static', filename='js/manager.js') }}"></script>
+
+
+{% endblock %}

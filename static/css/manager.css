@@ -1,0 +1,176 @@
+.user_info {
+    min-height: 30.5px; 
+    width:90%; 
+    padding: 5px 10px; 
+    background-color: inherit; 
+    border: 1px solid rgb(218,220,224); 
+    border-radius: 15px;
+    margin-right: 2.5%;
+}
+
+.manage-head {
+    width: 90%;
+}
+
+.select-menu {
+    display: flex;
+}
+
+.select-menu label {
+    margin-right: 2.5%;
+}
+
+.select-menu select {
+    border: 1px solid rgb(218,220,224); 
+    color: var(--osa-green); 
+    font-size: 16px; 
+    border-radius: 15px; 
+    padding: 5px; 
+    width: auto; 
+    margin-right: 2.5%;
+}
+
+.preview {
+    border: 1px solid rgb(218,220,224); 
+    height: 285px; 
+    max-height: 285px; 
+    overflow: auto; 
+    margin: auto 24px; 
+    padding: 24px; 
+    border-radius: 10px;
+}
+
+.sub-display {
+    display: flex;
+    padding: 16px; 
+    margin: 0 10%;
+}
+
+#account_email {
+    width: 80%;
+}
+
+#manage_account {
+    display: flex;
+    width: 20%;
+}
+
+.manage-form {
+    display: flex;
+    max-width: 100%;
+}
+
+.manage-form select, .manage-form input, .manage-form button{
+    border: 1px solid rgb(218,220,224); 
+    color: var(--osa-green); 
+    font-size: 16px; 
+    border-radius: 15px; 
+    padding: 5px; 
+    margin-right: 2.5%;
+    background-color: inherit;
+}
+
+.extra {
+    margin-top: 16px;
+}
+
+#player_name {
+    width: 60%;
+}
+
+#player_sport {
+    width: 25%;
+}
+
+#options {
+    width: 15%;
+}
+
+#desc {
+    width: 50%;
+}
+
+.rows {
+    display: flex;
+}
+
+@media screen and (max-width: 900px) {
+    .manage-head {
+        width: 80%;
+    }
+
+    .select-menu {
+        display: block;
+        text-align: center;
+    }
+
+    .select-menu label {
+        margin-right: 0;
+    }
+
+    .select-menu select {
+        margin-top: 15px;
+        margin-right: 0;
+        width: 100%; 
+    }
+
+    .preview {
+        height: 235px; 
+        max-height: 235px; 
+    }
+
+    .sub-display {
+        display: block;
+        margin: 0;
+        padding: 10px 0;
+        text-align: center;
+        justify-content: center;
+    }
+
+    #account_email {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #manage_account {
+        width: 100%;
+    }
+
+    .manage-form {
+        display: block;
+    }
+
+    .manage-form select, .manage-form input[type=text], .manage-form button{
+        width: 100%; 
+        margin-right: 0;
+        margin-bottom: 10px;
+        text-align: center;
+        margin-top: 0;
+    }
+
+    .manage-form input[type=datetime-local] {
+        width: 100%; 
+        margin-right: 0;
+        margin-top: 10px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    #player_name, #player_sport, #options {
+        width: 100%;
+        margin-bottom: 10px;
+
+    }
+
+    .extra {
+        margin: 0;
+    }
+
+    #desc {
+        width: 100%;
+    }
+
+    .rows {
+        display: block;
+    }
+}

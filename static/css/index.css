@@ -1,0 +1,217 @@
+/* Highlights */
+.highlights {
+    height: 300px;
+    width: 90%;
+    margin: 0px 5% 20px 5%;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 4px 0 rgb(0 0 0 / 20%);
+}
+
+.slide {
+    display: none;
+    height: 100%;
+}
+
+.fit {
+    display: flex;
+    height: 100%;
+    min-width: auto;
+    
+}
+
+.highlight-image {
+    width: 45%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.highlight-info {
+    width: 55%;
+    background: inherit;
+    padding: 2rem 4rem 2rem 2rem;
+    position: relative;  
+}
+
+.highlight-info p {
+    line-height: 1.6;
+}
+
+@media screen and (max-width: 900px) {
+    .highlights {
+        height: 400px;
+    }
+
+    .fit {
+        display: initial;
+    }
+
+    .highlight-image {
+        width: 100%;
+        height: 45%;
+    }
+
+    .highlight-info {
+        width: 100%;
+        height: 55%;
+        padding: 2rem 2rem 2rem 2rem;
+    
+    }
+
+}
+
+.prev, .next {
+    position: absolute;
+    cursor: pointer;
+    width: auto;
+    padding: 16px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(42, 42, 42, 0.8);
+}
+  
+.next {
+right: 0;
+border-radius: 3px 0 0 3px;
+box-sizing: border-box;
+}
+  
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+    z-index: 1;
+}
+  
+.prev:hover, .next:hover {
+background-color: rgba(255, 255, 255, 0.8);
+color: #000000;
+}
+
+/* Events */
+.home {
+    width: 90%;
+    height: 100%;
+    margin: 0px 5%;
+}
+
+.calendar {
+    margin: 5% 0 5% 2.5%;
+    width: 50%;
+    height: 300px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 4px 0 rgb(0 0 0 / 20%);
+}
+
+.date {
+    height: 20%;
+    width: 100%;
+    background: #ddd;
+}
+  
+.date p {
+    color: rgb(0, 94, 6);
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+.event-info {
+    height: 80%;
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+}
+
+.event-info li {
+  list-style-type: none;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size:20px;
+  color: #777;
+}
+
+.more {
+    background-color: #1e6b30;
+    height: 57px;
+    font-size: 18px;
+    padding: 0 16px;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 900px) {
+    .home {
+        display: block;
+        padding-bottom: 5%;
+    }
+    
+    .column {
+        width: 100%;
+    }
+
+    .calendar {
+        margin: 0;
+        width: 100%;
+    }
+
+    .more {
+        width: 100%;
+    }
+}
+
+/* Teams */
+.image {
+    width: 50%;
+    margin: 2.5% 2.5% 2.5% 0;
+}
+
+.team-image {
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 4px 0 rgb(0 0 0 / 20%);
+}
+
+@media screen and (max-width: 900px) {
+    .image {
+        width: 100%;
+        margin-top: 5%;
+    }
+}
+
+/* Our Vision */
+.statement {
+    width: 50%;
+}
+
+.left-logo {
+    position: relative;
+    margin-right: 2%;
+}
+
+.right-logo {
+    position: relative;
+    margin-left: 5%;
+
+}
+
+@media screen and (max-width: 900px) {
+    .statement {
+        width: 100%;
+    }
+
+    .left-logo {
+        display: none;
+    }
+    
+    .right-logo {
+        display: none;
+    }
+}
